@@ -10,6 +10,11 @@
 services:
   app:
     image: mikesir87/cats:2.0
+    networks:
+      - proxy
     labels:
       traefik.http.routers.dogs.rule: Host(`dogs.localhost`)
       traefik.http.services.dogs.loadbalancer.server.port: 5000
+networks:
+  proxy:
+    external: true
